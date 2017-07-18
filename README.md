@@ -22,7 +22,7 @@ docker stack deploy -c docker-compose.yml app && docker stack ls && docker stack
 ## Preparing production server
 
 You need a working server with ubuntu 16.04+ and key based ssh access.
-Repleace "ubuntu" and 54.23.1.45 to your server user and server ip.
+Replace "ubuntu" and 54.23.1.45 to your server user and server ip.
 
 ```
 docker-machine create -d generic --swarm-master --generic-ssh-user "ubuntu" --generic-ip-address 54.23.1.45 production-server

@@ -1,1 +1,11 @@
 version: '3'
+
+services:
+  static:
+    build: ./static
+    env_file: .env
+    image: swoldanski/example-static:${VERSION:-0.1.1}
+    ports:
+      - 80:80
+    deploy:
+      replicas: 5
