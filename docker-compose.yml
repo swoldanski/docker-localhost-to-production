@@ -6,7 +6,7 @@ services:
     env_file: .env
     image: swoldanski/example-static:${VERSION:-0.1.4}
     deploy:
-      replicas: 2
+      replicas: 3
     labels:
       - "traefik.backend=static"
       - "traefik.frontend.rule=PathPrefixStrip:/,/static"

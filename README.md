@@ -25,7 +25,8 @@ You need a working server with ubuntu 16.04+ and key based ssh access.
 Replace "ubuntu" and 54.246.249.150 to your server user and server ip.
 
 ```
-docker-machine create -d generic --swarm-master --generic-ssh-user "ubuntu" --generic-ip-address 54.246.249.150 production-server
+docker-machine create -d generic --generic-ssh-user "ubuntu" --generic-ip-address 54.246.249.150 production-server
+eval $(docker-machine env production-server) && docker-machine ls && docker swarm init
 ```
 
 ## Production deployment
@@ -37,10 +38,7 @@ docker-compose build && docker-compose push
 
 Deployment to production server:
 ```
-
-eval (docker-machine env production-server)
-
-docker stack deploy -c docker-compose.yml app && docker stack ls && docker stack ps app
+docker stack deploy -c docker-compose.yml app && docker stack ls && docker stack ps app && docker service ls
 ```
 
 ## Clean up or switching from docker-compose to docker swarm
