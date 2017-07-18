@@ -51,4 +51,10 @@ docker-compose down
 docker stack rm app
 ```
 
+## Clean up production server
+
+```
+docker stack rm app
+docker-machine rm production-server
+```
 
