@@ -1,15 +1,15 @@
 version: '3'
 
 services:
-  static:
-    build: ./static
+  simple-page:
+    build: ./simple-page
     env_file: .env
-    image: swoldanski/example-static:${VERSION:-0.1.4}
+    image: swoldanski/docker-l2p-simple-page:${VERSION:-0.1.5}
     deploy:
       replicas: 3
     labels:
-      - "traefik.backend=static"
-      - "traefik.frontend.rule=PathPrefixStrip:/,/static"
+      - "traefik.backend=simple-page"
+      - "traefik.frontend.rule=PathPrefixStrip:/,/simple-page"
       - "traefik.backend.loadbalancer.swarm=true"
   
 # infra & monitoring

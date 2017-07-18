@@ -11,7 +11,7 @@ Requirements:
 
 ## Local development & testing environment
 
-Let's start with typical use case - we have epic application and we need a simple way to run it.
+Let's start with typical use case - we have epic application and we need a simple way to show a working Proof of Concept or MVP.
 
 ```
 docker-compose up -d --build
@@ -24,7 +24,8 @@ docker-compose logs -f
 **Endpoints to check:**
 
 http://0.0.0.0
-http://0.0.0.0/static
+
+http://0.0.0.0/simple-page
 
 http://0.0.0.0:8080
 
@@ -53,7 +54,7 @@ You can try same endpoints like in previous step and maybe you can notice some c
 ## Preparing production server
 
 You need a working server with ubuntu 16.04+ with key based ssh access.
-Replace "ubuntu" and 54.246.249.150 to your server user and your server ip.
+Replace "ubuntu" and 54.246.249.150 with your server user and your server ip.
 
 ```
 docker-machine create -d generic --generic-ssh-user "ubuntu" --generic-ip-address 54.246.249.150 production-server
