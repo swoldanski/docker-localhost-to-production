@@ -4,8 +4,27 @@ services:
   static:
     build: ./static
     env_file: .env
-    image: swoldanski/example-static:${VERSION:-0.1.1}
-    ports:
-      - 80:80
+    image: swoldanski/example-static:${VERSION:-0.1.4}
     deploy:
-      replicas: 5
+      replicas: 2
+    labels:
+      - "traefik.backend=static"
+      - "traefik.frontend.rule=PathPrefixStrip:/,/static"
+      - "traefik.backend.loadbalancer.swarm=true"
+  
+# infra & monitoring
+  loadbalancer:
+    labels:
+      - "traefik.enable=false"
+    image: traefik
+    command: --web --docker --docker.domain=dell.local --logLevel=DEBUG
+    ports:
+      - 8080:8080 
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /dev/null:/traefik.toml
+    deploy:
+      mode: global
+    
