@@ -4,7 +4,7 @@ services:
   simple-page:
     build: ./simple-page
     env_file: .env
-    image: swoldanski/docker-l2p-simple-page:${VERSION:-0.1.5}
+    image: swoldanski/docker-l2p-simple-page:${VERSION:-0.1.8}
     deploy:
       replicas: 3
     ports:
@@ -13,7 +13,7 @@ services:
   ping-broker:
     build: ./ping-broker
     env_file: .env
-    image: swoldanski/docker-l2p-ping-broker:${VERSION:-0.1.5}
+    image: swoldanski/docker-l2p-ping-broker:${VERSION:-0.1.8}
     deploy:
       replicas: 2
     ports:
