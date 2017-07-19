@@ -7,24 +7,34 @@ services:
     image: swoldanski/docker-l2p-simple-page:${VERSION:-0.1.5}
     deploy:
       replicas: 3
-    labels:
-      - "traefik.backend=simple-page"
-      - "traefik.frontend.rule=PathPrefixStrip:/,/simple-page"
-      - "traefik.backend.loadbalancer.swarm=true"
-  
-# infra & monitoring
-  loadbalancer:
-    labels:
-      - "traefik.enable=false"
-    image: traefik
-    command: --web --docker --docker.domain=docker.local --logLevel=DEBUG
     ports:
-      - 8080:8080 
       - 80:80
-      - 443:443
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /dev/null:/traefik.toml
+  
+  ping-broker:
+    build: ./ping-broker
+    env_file: .env
+    image: swoldanski/docker-l2p-ping-broker:${VERSION:-0.1.5}
+    deploy:
+      replicas: 2
+    ports:
+      - 8000:80
+  
+  rabbit-master:
+    image: rabbitmq:3-management
+    env_file: .env
     deploy:
       replicas: 1
+    ports:
+      - 8080:15672
+  
+  rabbit-backup:
+    image: rabbitmq:3-management
+    env_file: .env
+    deploy:
+      replicas: 1
+    ports:
+      - 8090:15672
+    
+# infra & monitoring
+
     

@@ -25,9 +25,11 @@ docker-compose logs -f
 
 http://0.0.0.0
 
-http://0.0.0.0/simple-page
+http://0.0.0.0:8000
 
 http://0.0.0.0:8080
+
+http://0.0.0.0:8090
 
 
 
