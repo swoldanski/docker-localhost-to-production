@@ -25,7 +25,7 @@ services:
     deploy:
       replicas: 1
     ports:
-      - 8080:15672
+      - 9000:15672
   
   rabbit-backup:
     image: rabbitmq:3-management
@@ -33,8 +33,34 @@ services:
     deploy:
       replicas: 1
     ports:
-      - 8090:15672
+      - 9001:15672
     
-# infra & monitoring
+# infra & monitoring - take care, for production use you need rexternal authentication for most of them ;)
 
-    
+  master-cadvisor:
+    image: google/cadvisor
+    ports:
+      - 10000:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    deploy:
+      mode: global
+
+  portainer:
+    image: portainer/portainer
+    ports:
+      - 10001:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+
+volumes:
+  portainer-data:
