@@ -2,7 +2,7 @@
 Simple example how to deploy local environment to production server using Docker.
 
 This workshop is really introductory - don't expect too much. 
-I want to make you curious what is possible not bored :D
+I want to make you curious what is possible...
 
 **Requirements:**
  - local working Docker 17.03+
@@ -47,7 +47,7 @@ In cAdvisor and Portainer you can monitor system health and containers logs.
 
 ### Fix for our sidekick
 
-- Uncomment (remove #) line with BROKER=rabbit-master
+- Uncomment (remove #) line with BROKER=rabbit-master in .env file
 - Redeploy our stack executing in shell ```docker-compose up -d```
 
 Now you know how to "fix" (configure) application using **environment variables** at runtime. Try to modify other variables and redeploy stack.
