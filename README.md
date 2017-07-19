@@ -32,12 +32,18 @@ Master Rabbit http://0.0.0.0:9000
 
 Backup Rabbit http://0.0.0.0:9001
 
+We have 2 other services without web UI - producer and consumer (you can configure them using environment variables).
+Those services are here for testing our solution.
+You can scale them and check server and application reliability. 
+
 *monitoring & info about our infrastructure:*
 
 cAdvisor http://0.0.0.0:10000
 
 Portainer http://0.0.0.0:10001
 
+In Rabbit UI you can check how producer and consumer services works.
+In cAdvisor and Portainer you can monitor system health and containers logs.
 
 ### Fix for our sidekick
 
@@ -67,14 +73,15 @@ docker service ls
 ```
 
 You can try the same endpoints like in previous step and maybe you can notice some changes? ;)
+Take a look at Rabbit UI, cAdvisor and Portainer.
 
 ## Preparing production server
 
 You need a working server with ubuntu 16.04+ and key based ssh access.
-Replace "ubuntu" and 54.246.249.150 with your server user name and your server ip address or domain.
+Replace "ubuntu" and 54.246.147.65 with your server user name and your server ip address or domain.
 
 ```
-docker-machine create -d generic --generic-ssh-user "ubuntu" --generic-ip-address 54.246.249.150 production-server
+docker-machine create -d generic --generic-ssh-user "ubuntu" --generic-ip-address 54.246.147.65 production-server
 
 eval $(docker-machine env production-server)
 docker-machine ls

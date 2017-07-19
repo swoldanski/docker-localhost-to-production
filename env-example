@@ -1,0 +1,27 @@
+VERSION=0.1.16
+
+# Global switch for debug messages
+DEBUG=0
+
+#
+# Settings for simple-page
+#
+
+#AUTHOR=Sebastian
+#AUTHOR=AWS
+#AUTHOR=Developer
+
+
+#
+# Settings for ping-broker, producer, consumer
+#
+
+#BROKER=rabbit-master
+#BROKER=rabbit-backup
+
+BROKER_USER=guest
+BROKER_PASSWORD=guest
+
+#MSG_2_SEND=65536
+#MSG=I am Docker Master!
+#QUEUE=my-own-queue
