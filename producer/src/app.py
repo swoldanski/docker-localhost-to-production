@@ -41,7 +41,7 @@ while notConnected and fallback_counter < 10 :
       sys.exit(1)
 
     secondsToWait = fallback_counter * 10
-    print("Waiting {0} seconds for broker comming online...".format(secondsToWait))
+    print("Waiting {0} seconds for broker coming online...".format(secondsToWait))
     sleep(secondsToWait)
 
 
