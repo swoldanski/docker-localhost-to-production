@@ -29,7 +29,7 @@ notConnected = True
 
 while notConnected and fallback_counter < 10 :
   try:
-    print("Connecting to", BROKER_HOST, BROKER_USER, BROKER_PASSWORD, QUEUE)
+    print("Docker master at Action. Connecting to", BROKER_HOST, BROKER_USER, BROKER_PASSWORD, QUEUE)
     connection = pika.BlockingConnection(pika.ConnectionParameters(BROKER_HOST))
     notConnected = False
   except:
