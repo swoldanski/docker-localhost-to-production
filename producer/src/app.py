@@ -55,7 +55,7 @@ sleep(3)
 channel.queue_declare(queue=QUEUE)
 print("Sending {0} messages".format(MSG_2_SEND))
 
-for i in range(0,MSG_2_SEND):
+for i in range(1,MSG_2_SEND + 1):
   channel.basic_publish(exchange='', routing_key=QUEUE, body='{0} {1}'.format(i, MSG))
                       
 if DEBUG == 1:
